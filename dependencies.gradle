@@ -16,6 +16,8 @@ ext.versions = [
 
         lifecycle           : '2.2.0',
 
+        koin                : '2.2.1',
+
         jUnit               : '4.13.1',
         androidJUnit        : '1.1.12',
         espresso            : '3.3.0',
@@ -31,12 +33,18 @@ ext.libraries = [
 
         liveData            : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
         viewModel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+
+        koinAndroid         : "org.koin:koin-android:$versions.koin",
+        koinViewModel       : "org.koin:koin-androidx-viewmodel:$versions.koin",
+        koinFragment        : "org.koin:koin-androidx-fragment:$versions.koin",
 ]
 
 ext.testLibraries = [
         jUnit               : "junit:junit:$versions.jUnit",
         androidJUnit        : "androidx.test.ext:junit:$versions.androidJunit",
         espresso            : "androidx.test.espresso:espresso-core:$versions.espresso",
+
+        koinTest            : "org.koin:koin-test:$versions.koin",
 ]
 
 ext.gradlePlugins = [

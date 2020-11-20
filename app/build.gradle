@@ -42,10 +42,16 @@ dependencies {
 
     implementation libraries.liveData
     implementation libraries.viewModel
+
+    implementation libraries.koinAndroid
+    implementation libraries.koinViewModel
+    implementation libraries.koinFragment
 }
 
 dependencies {
     testImplementation testLibraries.jUnit
     androidTestImplementation testLibraries.androidJUnit
     androidTestImplementation testLibraries.espresso
+
+    testImplementation testLibraries.koinTest
 }

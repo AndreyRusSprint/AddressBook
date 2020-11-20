@@ -53,8 +53,13 @@ dependencies {
 
 dependencies {
     testImplementation testLibraries.jUnit
-    androidTestImplementation testLibraries.androidJUnit
-    androidTestImplementation testLibraries.espresso
+
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.mockitoInline
+    testImplementation testLibraries.mockitoKotlin
 
     testImplementation testLibraries.koinTest
+
+    androidTestImplementation testLibraries.androidJUnit
+    androidTestImplementation testLibraries.espresso
 }

@@ -24,6 +24,9 @@ ext.versions = [
         jUnit               : '4.13.1',
         androidJUnit        : '1.1.12',
         espresso            : '3.3.0',
+        mockito             : '3.6.23',
+        mockitoInline       : '3.6.23',
+        mockitoKotlin       : '2.2.0',
 ]
 
 ext.libraries = [
@@ -49,6 +52,10 @@ ext.testLibraries = [
         jUnit               : "junit:junit:$versions.jUnit",
         androidJUnit        : "androidx.test.ext:junit:$versions.androidJunit",
         espresso            : "androidx.test.espresso:espresso-core:$versions.espresso",
+
+        mockito             : "org.mockito:mockito-core:$versions.mockito",
+        mockitoInline       : "org.mockito:mockito-inline:$versions.mockitoInline",
+        mockitoKotlin       : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
 
         koinTest            : "org.koin:koin-test:$versions.koin",
 ]

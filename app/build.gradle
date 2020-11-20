@@ -47,6 +47,8 @@ dependencies {
     implementation libraries.koinAndroid
     implementation libraries.koinViewModel
     implementation libraries.koinFragment
+
+    implementation libraries.coroutinesAndroid
 }
 
 dependencies {

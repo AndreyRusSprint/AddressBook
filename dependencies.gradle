@@ -13,6 +13,7 @@ ext.versions = [
         appCompat           : '1.2.0',
         materialDesign      : '1.2.1',
         constraintLayout    : '2.0.4',
+        recyclerView        : '1.1.0',
 
         lifecycle           : '2.2.0',
 
@@ -30,6 +31,7 @@ ext.libraries = [
         appCompat           : "androidx.appcompat:appcompat:$versions.appCompat",
         materialDesign      : "com.google.android.material:material:$versions.materialDesign",
         constraintLayout    : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+        recyclerView        : "androidx.recyclerview:recyclerview:$versions.recyclerView",
 
         liveData            : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
         viewModel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",

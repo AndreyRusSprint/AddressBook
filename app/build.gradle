@@ -39,6 +39,7 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.materialDesign
     implementation libraries.constraintLayout
+    implementation libraries.recyclerView
 
     implementation libraries.liveData
     implementation libraries.viewModel

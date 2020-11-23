@@ -21,7 +21,7 @@ ext.versions = [
 
         coroutinesAndroid   : '1.3.9',
 
-        jUnit               : '4.13.1',
+        kotest              : '4.3.1',
         androidJUnit        : '1.1.12',
         espresso            : '3.3.0',
         mockito             : '3.6.23',
@@ -49,7 +49,7 @@ ext.libraries = [
 ]
 
 ext.testLibraries = [
-        jUnit               : "junit:junit:$versions.jUnit",
+        kotest              : "io.kotest:kotest-runner-junit5:$versions.kotest",
         androidJUnit        : "androidx.test.ext:junit:$versions.androidJunit",
         espresso            : "androidx.test.espresso:espresso-core:$versions.espresso",
 

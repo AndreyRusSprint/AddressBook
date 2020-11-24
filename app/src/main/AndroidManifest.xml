@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AddressBook"
         tools:replace="android:allowBackup">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentation.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

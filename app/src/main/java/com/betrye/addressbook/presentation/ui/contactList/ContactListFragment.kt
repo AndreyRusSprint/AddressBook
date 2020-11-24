@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.betrye.addressbook.R
 import com.betrye.addressbook.databinding.FragmentContactListBinding
+import com.betrye.addressbook.presentation.common.Router
 import com.betrye.addressbook.presentation.common.ToolbarHolder
+import com.betrye.addressbook.presentation.entity.ContactPM
 import com.betrye.addressbook.presentation.entity.ErrorState
-import com.betrye.addressbook.presentation.ui.main.MainActivity
+import com.betrye.addressbook.presentation.ui.contactDetails.ContactDetailsFragment
 import com.betrye.addressbook.presentation.viewModel.contactList.ContactListViewModel
 
 class ContactListFragment(private val viewModel: ContactListViewModel) : Fragment() {
@@ -74,9 +77,7 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
     }
 
     private fun setupRecyclerView() {
-        contactListAdapter = ContactListAdapter {
-            (activity as? MainActivity)?.showContactDetails(it)
-        }
+        contactListAdapter = ContactListAdapter(::openDetails)
         binding.rvContacts.let { rv ->
             rv.layoutManager = LinearLayoutManager(context)
             rv.setHasFixedSize(false)
@@ -106,6 +107,14 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
                     }
                 }
             }
+    }
+
+    private fun openDetails(contact: ContactPM) {
+        (activity as? Router)?.navigateTo(
+            ContactDetailsFragment::class.java, bundleOf(
+                ContactDetailsFragment.KEY_CONTACT to contact
+            )
+        )
     }
 
     companion object {

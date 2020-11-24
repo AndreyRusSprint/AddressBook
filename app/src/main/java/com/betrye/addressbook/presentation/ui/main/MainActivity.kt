@@ -2,15 +2,16 @@ package com.betrye.addressbook.presentation.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.betrye.addressbook.R
+import com.betrye.addressbook.presentation.common.Router
 import com.betrye.addressbook.presentation.common.ToolbarHolder
-import com.betrye.addressbook.presentation.entity.ContactPM
 import com.betrye.addressbook.presentation.ui.contactList.ContactListFragment
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.core.KoinExperimentalAPI
 
 @KoinExperimentalAPI
-class MainActivity : AppCompatActivity(), ToolbarHolder {
+class MainActivity : AppCompatActivity(), ToolbarHolder, Router {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setupKoinFragmentFactory()
@@ -32,7 +33,10 @@ class MainActivity : AppCompatActivity(), ToolbarHolder {
         supportActionBar?.setTitle(titleRes)
     }
 
-    fun showContactDetails(contact: ContactPM) {
-        
+    override fun navigateTo(fragmentClass: Class<out Fragment>, args: Bundle?) {
+        supportFragmentManager.beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.container, fragmentClass, args)
+            .commit()
     }
 }

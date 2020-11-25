@@ -61,6 +61,8 @@ dependencies {
     implementation libraries.koinFragment
 
     implementation libraries.coroutinesAndroid
+
+    implementation libraries.coil
 }
 
 dependencies {

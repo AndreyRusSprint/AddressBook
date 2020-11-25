@@ -50,6 +50,7 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.materialDesign
     implementation libraries.constraintLayout
+    implementation libraries.coordinatorLayout
     implementation libraries.recyclerView
 
     implementation libraries.liveData

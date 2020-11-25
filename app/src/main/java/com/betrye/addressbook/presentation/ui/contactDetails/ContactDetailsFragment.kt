@@ -21,6 +21,9 @@ class ContactDetailsFragment(private val viewModel: ContactDetailsViewModel) : F
     private val binding: FragmentContactDetailsBinding
         get() = _binding!!
 
+    private val toolbarHolder: ToolbarHolder?
+        get() = activity as? ToolbarHolder
+
     private var phoneAdapter: PhoneAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -34,6 +37,16 @@ class ContactDetailsFragment(private val viewModel: ContactDetailsViewModel) : F
 
         val contact = arguments?.getParcelable(KEY_CONTACT) as? ContactPM
         contact?.let(viewModel::setContact)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbarHolder?.setToolbarVisibility(false)
+    }
+
+    override fun onStop() {
+        toolbarHolder?.setToolbarVisibility(true)
+        super.onStop()
     }
 
     override fun onDestroyView() {
@@ -54,14 +67,9 @@ class ContactDetailsFragment(private val viewModel: ContactDetailsViewModel) : F
     private fun observeViewModel() {
         viewModel.contact
             .observe(viewLifecycleOwner) { contact ->
-                setTitle(contact.name)
-                binding.tvName.text = contact.name
+                binding.collapsingToolbar.title = contact.name
                 contact.avatarUri?.let(binding.ivAvatar::setImageURI)
                 phoneAdapter?.phoneList = contact.phones
             }
-    }
-
-    private fun setTitle(title: String) {
-        (activity as? ToolbarHolder)?.setToolbarTitle(title)
     }
 }

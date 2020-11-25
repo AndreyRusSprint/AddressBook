@@ -3,6 +3,8 @@ package com.betrye.addressbook.presentation.ui.contactList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.loadAny
+import com.betrye.addressbook.R
 import com.betrye.addressbook.databinding.ItemContactBinding
 import com.betrye.addressbook.presentation.entity.ContactPM
 import com.betrye.addressbook.presentation.entity.PhoneTypePM
@@ -44,7 +46,9 @@ internal class ContactListAdapter(
                         .find { it.type == PhoneTypePM.MAIN }?.number
                         ?: contact.phones.first().number
                 }
-                contact.avatarUri?.let(ivAvatar::setImageURI)
+                ivAvatar.loadAny(contact.avatarUri ?: R.drawable.ic_default_avatar) {
+                    crossfade(true)
+                }
             }
         }
     }

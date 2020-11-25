@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
+import coil.loadAny
+import com.betrye.addressbook.R
 import com.betrye.addressbook.databinding.FragmentContactDetailsBinding
 import com.betrye.addressbook.presentation.common.ToolbarHolder
 import com.betrye.addressbook.presentation.entity.ContactPM
@@ -68,7 +71,9 @@ class ContactDetailsFragment(private val viewModel: ContactDetailsViewModel) : F
         viewModel.contact
             .observe(viewLifecycleOwner) { contact ->
                 binding.collapsingToolbar.title = contact.name
-                contact.avatarUri?.let(binding.ivAvatar::setImageURI)
+                binding.ivAvatar.loadAny(contact.avatarUri ?: R.drawable.ic_default_avatar) {
+                    crossfade(true)
+                }
                 phoneAdapter?.phoneList = contact.phones
             }
     }

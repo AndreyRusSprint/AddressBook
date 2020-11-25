@@ -36,11 +36,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/design_default_color_primary"
-        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/btnRetry"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:visibility="gone"
         tools:visibility="visible"
         tools:text="@string/error_state_data_store_failure" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvError"
+        app:layout_constraintEnd_toEndOf="@id/tvError"
+        app:layout_constraintTop_toBottomOf="@id/tvError"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:text="@string/retry"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

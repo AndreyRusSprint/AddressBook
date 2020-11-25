@@ -5,6 +5,7 @@
 
     <string name="error_state_permission_denied">В доступе отказано</string>
     <string name="error_state_data_store_failure">Произошла ошибка</string>
+    <string name="retry">Повторить</string>
 
     <string name="phone_type_main">Основной</string>
     <string name="phone_type_mobile">Мобильный</string>

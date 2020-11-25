@@ -52,13 +52,14 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
         if (hasPermissions) {
             viewModel.fetchContacts()
         } else {
-            requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_PERMISSIONS_CODE)
+            requestPermissions()
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupRecyclerView()
         observeViewModel()
+        setListeners()
     }
 
     override fun onDestroyView() {
@@ -90,6 +91,16 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
         }
     }
 
+    private fun setListeners() {
+        binding.btnRetry.setOnClickListener {
+            if (!hasPermissions) {
+                requestPermissions()
+            } else {
+                viewModel.fetchContacts()
+            }
+        }
+    }
+
     private fun observeViewModel() {
         viewModel.contacts
             .observe(viewLifecycleOwner) {
@@ -105,13 +116,19 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
             .observe(viewLifecycleOwner) { errorState ->
                 if (errorState == ErrorState.NONE) {
                     binding.tvError.visibility = View.GONE
+                    binding.btnRetry.visibility = View.GONE
                 } else {
                     errorState.message?.let {
                         binding.tvError.setText(it)
                         binding.tvError.visibility = View.VISIBLE
+                        binding.btnRetry.visibility = View.VISIBLE
                     }
                 }
             }
+    }
+
+    private fun requestPermissions() {
+        requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_PERMISSIONS_CODE)
     }
 
     private fun openDetails(contact: ContactPM) {

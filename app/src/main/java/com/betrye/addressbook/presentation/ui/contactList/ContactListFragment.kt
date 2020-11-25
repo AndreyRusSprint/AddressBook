@@ -26,6 +26,11 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
     private val binding: FragmentContactListBinding
         get() = _binding!!
 
+    private val toolbarHolder: ToolbarHolder?
+        get() = activity as? ToolbarHolder
+    private val router: Router?
+        get() = activity as? Router
+
     private var contactListAdapter: ContactListAdapter? = null
 
     private val hasPermissions: Boolean
@@ -73,7 +78,7 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
     }
 
     private fun setTitle() {
-        (activity as? ToolbarHolder)?.setToolbarTitle(R.string.contact_list_title)
+        toolbarHolder?.setToolbarTitle(R.string.contact_list_title)
     }
 
     private fun setupRecyclerView() {
@@ -110,7 +115,7 @@ class ContactListFragment(private val viewModel: ContactListViewModel) : Fragmen
     }
 
     private fun openDetails(contact: ContactPM) {
-        (activity as? Router)?.navigateTo(
+        router?.navigateTo(
             ContactDetailsFragment::class.java, bundleOf(
                 ContactDetailsFragment.KEY_CONTACT to contact
             )
